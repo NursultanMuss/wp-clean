@@ -10,10 +10,10 @@ $(document).ready(function() {
 	$(".top_text h1").animated("fadeInDown", "fadeOutUp");
 	$(".top_text p, .section_header").animated("fadeInUp", "fadeOutDown");
 	$(".animation_2").animated("fadeInLeft", "fadeOutLeft");
-	$(".left .s_services_item").animated("fadeInLeft", "fadeOutLeft");
+	$(".left .s_services_item").animated("fadeInLeft", "fadeOutDown");
 	$(".animation_1").animated("flipInY", "flipOutY");
 	$(".animation_3").animated("fadeInRight", "fadeOutRight");
-	$(".right .s_services_item").animated("fadeInRight", "fadeOutRight");
+	$(".right .s_services_item").animated("fadeInRight", "fadeOutDown");
 	function heightDetect(){
 		$(".main_head").css("height", $(window).height())
 	}
