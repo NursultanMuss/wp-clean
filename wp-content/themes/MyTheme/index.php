@@ -114,151 +114,44 @@ get_header();
                     </ul>
                 </div>
                 <div id="portfolio_grid">
+                    <?php
+                    $args=array(
 
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-1">
-                        <img src="img/portfolio-images/wireframe.cc-fEKu0b.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/wireframe.cc-fEKu0b.jpg" alt="Alt">
+                        'cat' => 7
+                    );
+                    if ( have_posts() ) : query_posts( $args);
+                        while (have_posts()) : the_post(); ?>
+                            <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item <?php
+                            $tags = wp_get_post_tags($post->ID);
+                            if ($tags) {
+                                foreach($tags as $tag) {
+                                    echo ' '. $tag->name;
+                                }
+                            }
+                            ?>">
+                                <?php the_post_thumbnail(array(300, 220)); ?>
+                                <div class="port_item_cont">
+                                    <h3><?php the_title(); ?></h3>
+                                    <?php the_excerpt(); ?>
+                                    <a href="#" class="popup_content">Посмотреть</a>
+
+                                </div>
+                                <div class="hidden">
+                                    <div class="podrt_descr">
+                                        <div class="modal-box-content">
+                                            <button class="mfp-close" type="button" title="Close (Esc)">x</button>
+                                            <h3><?php the_title(); ?></h3>
+                                            <?php the_content()?>
+
+                                            <?php if ( has_post_thumbnail()) {
+                                                $large_image_url = wp_get_attachment_image_src( get_post_thumbnail_id(), 'large');?>
+                                                <img src="<?php echo $large_image_url[0]; ?>" alt="<?php the_title();?>">
+                                            <?php } ?>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-1">
-                        <img src="img/portfolio-images/2.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/2.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-1">
-                        <img src="img/portfolio-images/3.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/3.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-2">
-                        <img src="img/portfolio-images/4.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/4.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-3">
-                        <img src="img/portfolio-images/5.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/5.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-1">
-                        <img src="img/portfolio-images/6.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/6.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-2">
-                        <img src="img/portfolio-images/2.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/2.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mix col-md-3 col-sm-6 col-xs-6 portfolio_item category-4">
-                        <img src="img/portfolio-images/1.jpg" alt="Alt">
-                        <div class="port_item_cont">
-                            <h3>Заголовок работы</h3>
-                            <p>Описание работы</p>
-                            <a href="#" class="popup_content">Посмотреть</a>
-                        </div>
-                        <div class="hidden">
-                            <div class="podrt_descr">
-                                <div class="modal-box-content">
-                                    <button class="mfp-close" type="button" title="Close (Esc)">x</button>
-                                    <h3>Заголовок работы</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid at consequuntur corporis dolores porro praesentium sed. Ad aliquid debitis deleniti deserunt dolores ducimus hic impedit iste officia voluptate. Sunt, totam!</p>
-                                    <img src="img/portfolio-images/1.jpg" alt="Alt">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        <?php endwhile; endif; wp_reset_query(); ?>
                 </div>
 
             </div>
